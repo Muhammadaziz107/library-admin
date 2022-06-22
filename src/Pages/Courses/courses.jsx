@@ -5,12 +5,25 @@ import "./courses.css";
 function Courses() {
   const [data, setData] = useState([]);
 
-  useEffect(async () => {
-    try {
-      const res = await fetch();
-    } catch (err) {
-      console.log(err);
-    }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          "https://coursesnodejs.herokuapp.com/employee/course?limit=5&page=1",
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
   });
   return (
     <div>
